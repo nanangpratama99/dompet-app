@@ -1,6 +1,7 @@
 import 'package:dompet/models/model.dart';
 import 'package:dompet/screen/widgets/app_bar.dart';
 import 'package:dompet/screen/widgets/card_overview.dart';
+import 'package:dompet/screen/widgets/insight.dart';
 import 'package:dompet/screen/widgets/invoice_card.dart';
 import 'package:dompet/screen/widgets/notification.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../constant/constant.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final List<double> insightData = [0.4, 0.7, 0.5, 0.9, 0.4]; // Sample data
+
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -99,30 +102,99 @@ class HomeScreen extends StatelessWidget {
             // content 2
             const BuildCardOverview(),
             Container(
+              padding: const EdgeInsets.all(15),
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2), // Shadow color
+                    spreadRadius: 5, // Spread radius
+                    blurRadius: 7, // Blur radius
+                    offset:
+                        const Offset(0, 3), // Offset in the x and y direction
+                  ),
+                ],
               ),
               child: Column(
                 children: [
                   Row(
                     children: [
-                      const Text("Activityy"),
-                      const Text("data"),
+                      const Text("Activity", style: TextStyle(fontSize: 20)),
                       const Spacer(),
-                      Container(
-                        height: 20,
-                        width: 20,
-                        color: Colors.amber,
-                      )
+                      const Text("Income", style: TextStyle(fontSize: 18)),
+                      const SizedBox(width: 10),
+                      _buildDot(Colors.green),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      const Text("\$49384", style: TextStyle(fontSize: 20)),
+                      const Spacer(),
+                      const Text("Outcome", style: TextStyle(fontSize: 18)),
+                      const SizedBox(width: 10),
+                      _buildDot(Colors.redAccent),
+                    ],
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 25),
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            _buildCountInsight('80'),
+                            _buildCountInsight('60'),
+                            _buildCountInsight('40'),
+                            _buildCountInsight('30'),
+                            _buildCountInsight('0'),
+                          ],
+                        ),
+                        const Spacer(),
+                        Column(
+                          children: [
+                            InsightGraph(
+                              dataPoints: insightData,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildCountInsight('Text'),
+                      _buildCountInsight('Text'),
+                      _buildCountInsight('Text'),
+                      _buildCountInsight('Text'),
                     ],
                   )
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 20),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildCountInsight(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: Text(text),
+    );
+  }
+
+  Container _buildDot(Color color) {
+    return Container(
+      height: 20,
+      width: 20,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(20),
       ),
     );
   }
