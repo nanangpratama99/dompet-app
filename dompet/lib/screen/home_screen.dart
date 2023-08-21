@@ -108,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Text("Activity"),
+                      const Text("Activityy"),
                       const Text("data"),
                       const Spacer(),
                       Container(
