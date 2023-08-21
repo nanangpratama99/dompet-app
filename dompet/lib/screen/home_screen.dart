@@ -162,18 +162,23 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildCountInsight('Text'),
-                      _buildCountInsight('Text'),
-                      _buildCountInsight('Text'),
-                      _buildCountInsight('Text'),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildCountInsight('Text'),
+                        _buildCountInsight('Text'),
+                        _buildCountInsight('Text'),
+                        _buildCountInsight('Text'),
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
+
+            const BuildQuicTransfer(),
             const SizedBox(height: 20),
           ],
         ),
@@ -195,6 +200,52 @@ class HomeScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),
+      ),
+    );
+  }
+}
+
+class BuildQuicTransfer extends StatelessWidget {
+  const BuildQuicTransfer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2), // Shadow color
+            spreadRadius: 5, // Spread radius
+            blurRadius: 7, // Blur radius
+            offset: const Offset(0, 3), // Offset in the x and y direction
+          ),
+        ],
+      ),
+      child: const Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Quic Transfer", style: TextStyle(fontSize: 20)),
+              Icon(
+                Icons.more_vert,
+                color: Colors.grey,
+              ),
+            ],
+          ),
+          Text(
+            "If the [style] argument is null",
+            style: TextStyle(color: Colors.grey),
+          )
+        ],
       ),
     );
   }
