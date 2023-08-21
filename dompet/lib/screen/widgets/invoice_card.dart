@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constant/constant.dart';
-import '../../models/model.dart';
 
-class InvoiceCard extends StatefulWidget {
-  const InvoiceCard({
+class BuildInvoiceCard extends StatefulWidget {
+  const BuildInvoiceCard({
     super.key,
+    required this.context,
+    required this.color,
+    required this.icon,
+    required this.title,
+    required this.description,
   });
 
+  final BuildContext context;
+  final Color color;
+  final String icon;
+  final String title;
+  final String description;
+
   @override
-  State<InvoiceCard> createState() => _InvoiceCardState();
+  State<BuildInvoiceCard> createState() => _BuildInvoiceCardState();
 }
 
-class _InvoiceCardState extends State<InvoiceCard> {
-  get index => null;
-
+class _BuildInvoiceCardState extends State<BuildInvoiceCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +33,7 @@ class _InvoiceCardState extends State<InvoiceCard> {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(35),
-        color: demoData[index].color,
+        color: widget.color,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -43,7 +51,7 @@ class _InvoiceCardState extends State<InvoiceCard> {
                 ),
                 child: Center(
                   child: SvgPicture.asset(
-                    demoData[index].icon,
+                    widget.icon,
                     width: 40,
                     color: white,
                   ),
@@ -57,12 +65,12 @@ class _InvoiceCardState extends State<InvoiceCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                demoData[index].title,
+                widget.title,
                 style: const TextStyle(color: white, fontSize: 30),
               ),
               const SizedBox(height: 5),
               Text(
-                demoData[index].description,
+                widget.description,
                 style: const TextStyle(color: white2, fontSize: 15),
               ),
             ],

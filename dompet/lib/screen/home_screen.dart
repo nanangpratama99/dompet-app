@@ -1,4 +1,7 @@
 import 'package:dompet/models/model.dart';
+import 'package:dompet/screen/widgets/app_bar.dart';
+import 'package:dompet/screen/widgets/card_overview.dart';
+import 'package:dompet/screen/widgets/invoice_card.dart';
 import 'package:dompet/screen/widgets/notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,20 +17,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Row(
-          children: [
-            SvgPicture.asset(
-              "assets/svg/wallet-money.svg",
-              color: color3,
-              width: 50,
-            ),
-            const SizedBox(width: 10),
-            SvgPicture.asset(
-              "assets/svg/burger-menu.svg",
-              width: 50,
-            ),
-          ],
-        ),
+        title: const BuildAppBar(),
         actions: [
           Stack(
             children: [
@@ -78,76 +68,59 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
           children: [
+            BuildInvoiceCard(
+                context: context,
+                color: color1,
+                icon: demoData[0].icon,
+                title: demoData[0].title,
+                description: demoData[0].description),
+            BuildInvoiceCard(
+                context: context,
+                color: color2,
+                icon: demoData[1].icon,
+                title: demoData[1].title,
+                description: demoData[1].description),
+            BuildInvoiceCard(
+                context: context,
+                color: color3,
+                icon: demoData[2].icon,
+                title: demoData[2].title,
+                description: demoData[2].description),
+            BuildInvoiceCard(
+                context: context,
+                color: color4,
+                icon: demoData[3].icon,
+                title: demoData[3].title,
+                description: demoData[3].description),
+
+            // content 2
+            const BuildCardOverview(),
             Container(
-              height: 50,
-              width: 100,
-              color: Colors.amber,
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: demoData.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    height: 130,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(35),
-                      color: demoData[index].color,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(15),
-                              width: 70,
-                              height: 70,
-                              decoration: BoxDecoration(
-                                color: white.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                              child: Center(
-                                child: SvgPicture.asset(
-                                  demoData[index].icon,
-                                  width: 40,
-                                  color: white,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(width: 20),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              demoData[index].title,
-                              style:
-                                  const TextStyle(color: white, fontSize: 30),
-                            ),
-                            const SizedBox(height: 5),
-                            Text(
-                              demoData[index].description,
-                              style:
-                                  const TextStyle(color: white2, fontSize: 15),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  );
-                },
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
               ),
-            ),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      const Text("Activityy"),
+                      const Text("data"),
+                      const Spacer(),
+                      Container(
+                        height: 20,
+                        width: 20,
+                        color: Colors.amber,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),

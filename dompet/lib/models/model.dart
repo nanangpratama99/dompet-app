@@ -14,6 +14,39 @@ class Items {
       required this.color});
 }
 
+class ListTile {
+  final String text;
+  final String percentage;
+  final Color color;
+
+  ListTile({required this.text, required this.percentage, required this.color});
+}
+
+// demo data list tile
+
+final List<ListTile> demoListData = [
+  ListTile(
+    text: 'Account',
+    percentage: '20%',
+    color: color1,
+  ),
+  ListTile(
+    text: 'Service',
+    percentage: '40%',
+    color: color2,
+  ),
+  ListTile(
+    text: 'Restourant',
+    percentage: '10%',
+    color: color3,
+  ),
+  ListTile(
+    text: 'Other',
+    percentage: '30%',
+    color: color4,
+  ),
+];
+
 // demo data
 final List<Items> demoData = [
   Items(
