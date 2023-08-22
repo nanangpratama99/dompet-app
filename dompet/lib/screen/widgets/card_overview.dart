@@ -39,7 +39,7 @@ class BuildCardOverview extends StatelessWidget {
           const Text("The getter 'child' isn't defined for the class"),
           const SizedBox(height: 25),
           SizedBox(
-            height: 150, // Set an appropriate height for your use case
+            height: 160, // Set an appropriate height for your use case
             child: ListView.builder(
               itemCount: demoData.length,
               itemBuilder: (BuildContext context, int index) {

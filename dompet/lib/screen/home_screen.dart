@@ -1,26 +1,60 @@
 import 'package:dompet/models/model.dart';
-import 'package:dompet/screen/widgets/app_bar.dart';
 import 'package:dompet/screen/widgets/card_overview.dart';
+import 'package:dompet/screen/widgets/custom_drawer.dart';
 import 'package:dompet/screen/widgets/insight.dart';
 import 'package:dompet/screen/widgets/invoice_card.dart';
 import 'package:dompet/screen/widgets/notification.dart';
+import 'package:dompet/screen/widgets/quick_transfer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constant/constant.dart';
 
-class HomeScreen extends StatelessWidget {
-  final List<double> insightData = [0.4, 0.7, 0.5, 0.9, 0.4]; // Sample data
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
-  HomeScreen({super.key});
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+  final List<double> insightData = [0.4, 0.7, 0.5, 0.9, 0.4];
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Container(
+        margin: const EdgeInsets.only(top: 30, bottom: 30),
+        width: MediaQuery.of(context).size.width * 0.7,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(50),
+            bottomRight: Radius.circular(50),
+          ),
+        ),
+        child: const CustomDrawer(),
+      ),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const BuildAppBar(),
+        leading: IconButton(
+          icon: SvgPicture.asset(
+            "assets/svg/burger-menu.svg",
+            width: 100,
+          ),
+          onPressed: () => _scaffoldKey.currentState!.openDrawer(),
+        ),
+        title: Row(
+          children: [
+            SvgPicture.asset(
+              "assets/svg/wallet-money.svg",
+              color: color3,
+              width: 50,
+            ),
+          ],
+        ),
         actions: [
           Stack(
             children: [
@@ -179,10 +213,13 @@ class HomeScreen extends StatelessWidget {
             ),
 
             const BuildQuicTransfer(),
-            const SizedBox(height: 20),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: color2,
+          child: const Icon(Icons.calendar_today_outlined),
+          onPressed: () {}),
     );
   }
 
@@ -200,52 +237,6 @@ class HomeScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),
-      ),
-    );
-  }
-}
-
-class BuildQuicTransfer extends StatelessWidget {
-  const BuildQuicTransfer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
-      height: 100,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2), // Shadow color
-            spreadRadius: 5, // Spread radius
-            blurRadius: 7, // Blur radius
-            offset: const Offset(0, 3), // Offset in the x and y direction
-          ),
-        ],
-      ),
-      child: const Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Quic Transfer", style: TextStyle(fontSize: 20)),
-              Icon(
-                Icons.more_vert,
-                color: Colors.grey,
-              ),
-            ],
-          ),
-          Text(
-            "If the [style] argument is null",
-            style: TextStyle(color: Colors.grey),
-          )
-        ],
       ),
     );
   }
