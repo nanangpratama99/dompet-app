@@ -11,3 +11,12 @@ const Color color6 = Color(0xFFA9C6D6); // 7A73E7
 const Color color7 = Color(0xFF4A6ECC); // 7A73E7
 const Color white = Colors.white; // 7A73E7
 const Color white2 = Colors.white60; // 7A73E7
+
+// box shadow
+
+BoxShadow myBoxShadow = BoxShadow(
+  color: Colors.black.withOpacity(0.2),
+  blurRadius: 10.0,
+  spreadRadius: 2.0,
+  offset: const Offset(4.0, 4.0),
+);

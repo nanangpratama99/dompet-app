@@ -1,14 +1,16 @@
 import 'package:dompet/models/model.dart';
-import 'package:dompet/screen/widgets/card_overview.dart';
-import 'package:dompet/screen/widgets/custom_drawer.dart';
-import 'package:dompet/screen/widgets/insight.dart';
-import 'package:dompet/screen/widgets/invoice_card.dart';
-import 'package:dompet/screen/widgets/notification.dart';
-import 'package:dompet/screen/widgets/quick_transfer.dart';
+import 'package:dompet/screen/widgets/home/widgets/card_overview.dart';
+import 'package:dompet/screen/widgets/home/widgets/card_spendings.dart';
+import 'package:dompet/screen/widgets/home/widgets/custom_drawer.dart';
+import 'package:dompet/screen/widgets/home/widgets/insight.dart';
+import 'package:dompet/screen/widgets/home/widgets/invoice_card.dart';
+import 'package:dompet/screen/widgets/home/widgets/quick_transfer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../constant/constant.dart';
+import '/../constant/constant.dart';
+import 'widgets/notification.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -153,24 +155,22 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      const Text("Activity", style: TextStyle(fontSize: 20)),
-                      const Spacer(),
-                      const Text("Income", style: TextStyle(fontSize: 18)),
-                      const SizedBox(width: 10),
-                      _buildDot(Colors.green),
-                    ],
-                  ),
                   const SizedBox(height: 15),
                   Row(
                     children: [
+                      const Text("Income", style: TextStyle(fontSize: 18)),
                       const Text("\$49384", style: TextStyle(fontSize: 20)),
                       const Spacer(),
                       const Text("Outcome", style: TextStyle(fontSize: 18)),
+                      const Text("\$49384", style: TextStyle(fontSize: 20)),
                       const SizedBox(width: 10),
                       _buildDot(Colors.redAccent),
                     ],
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.amber,
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 25),
@@ -212,7 +212,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            const BuildQuicTransfer(),
+            const BuildQuicTransfer(
+              title: 'a',
+            ),
+            const SizedBox(height: 20),
+            const BuildSpendingsCard()
           ],
         ),
       ),

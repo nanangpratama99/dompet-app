@@ -1,12 +1,21 @@
+import 'package:dompet/screen/widgets/home/widgets/custom_circleavatar.dart';
 import 'package:flutter/material.dart';
 
-import '../../constant/constant.dart';
+import '/../../constant/constant.dart';
 
-class BuildQuicTransfer extends StatelessWidget {
+class BuildQuicTransfer extends StatefulWidget {
+  final String title;
   const BuildQuicTransfer({
     super.key,
+    required this.title,
   });
 
+  @override
+  State<BuildQuicTransfer> createState() => _BuildQuicTransferState();
+}
+
+class _BuildQuicTransferState extends State<BuildQuicTransfer> {
+  int amount = 10000;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -87,15 +96,47 @@ class BuildQuicTransfer extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 20),
+          const BuildCircleAvatar(),
           const SizedBox(height: 10),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                "$amount",
+                style: const TextStyle(
+                  fontSize: 32.0,
+                ),
+              ),
+              Slider(
+                label: "Select Amount",
+                value: amount.toDouble(),
+                onChanged: (value) {
+                  setState(() {
+                    amount = value.toInt();
+                  });
+                },
+                min: 10000,
+                max: 100000,
+              ),
+            ],
+          ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Your Balance"),
+              Text("\$100.000"),
+            ],
+          ),
+          const SizedBox(height: 20),
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 50,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: color1,
+                  backgroundColor: color3,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
+                      borderRadius: BorderRadius.circular(15))),
               onPressed: () {},
               child: const Text("Submit"),
             ),

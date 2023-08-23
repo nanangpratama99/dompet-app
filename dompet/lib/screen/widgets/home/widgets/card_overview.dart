@@ -1,7 +1,7 @@
 import 'package:dompet/models/model.dart';
 import 'package:flutter/material.dart';
 
-import '../../constant/constant.dart';
+import '/../../constant/constant.dart';
 
 class BuildCardOverview extends StatelessWidget {
   const BuildCardOverview({
@@ -15,7 +15,7 @@ class BuildCardOverview extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(30),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2), // Shadow color
