@@ -1,4 +1,4 @@
-import 'package:dompet/screen/widgets/home/home_screen.dart';
+import 'package:dompet/pages/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

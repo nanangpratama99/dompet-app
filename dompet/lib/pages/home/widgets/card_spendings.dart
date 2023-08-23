@@ -1,6 +1,6 @@
-import 'package:dompet/screen/widgets/home/widgets/head_spend_title.dart';
-import 'package:dompet/screen/widgets/home/widgets/spend_button.dart';
-import 'package:dompet/screen/widgets/list_progres_item.dart';
+import 'package:dompet/pages/home/widgets/head_spend_title.dart';
+import 'package:dompet/pages/home/widgets/spend_button.dart';
+import 'package:dompet/pages/home/widgets/list_progres_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constant/constant.dart';

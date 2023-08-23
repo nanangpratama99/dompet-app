@@ -1,10 +1,10 @@
 import 'package:dompet/models/model.dart';
-import 'package:dompet/screen/widgets/home/widgets/card_overview.dart';
-import 'package:dompet/screen/widgets/home/widgets/card_spendings.dart';
-import 'package:dompet/screen/widgets/home/widgets/custom_drawer.dart';
-import 'package:dompet/screen/widgets/home/widgets/insight.dart';
-import 'package:dompet/screen/widgets/home/widgets/invoice_card.dart';
-import 'package:dompet/screen/widgets/home/widgets/quick_transfer.dart';
+import 'package:dompet/pages/home/widgets/card_overview.dart';
+import 'package:dompet/pages/home/widgets/card_spendings.dart';
+import 'package:dompet/pages/home/widgets/custom_drawer.dart';
+import 'package:dompet/pages/home/widgets/insight.dart';
+import 'package:dompet/pages/home/widgets/invoice_card.dart';
+import 'package:dompet/pages/home/widgets/quick_transfer.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

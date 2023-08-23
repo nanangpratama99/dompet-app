@@ -1,4 +1,4 @@
-import 'package:dompet/screen/widgets/home/widgets/custom_circleavatar.dart';
+import 'package:dompet/pages/home/widgets/custom_circleavatar.dart';
 import 'package:flutter/material.dart';
 
 import '/../../constant/constant.dart';

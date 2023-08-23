@@ -29,7 +29,7 @@ class BuildListProgresItem extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: Text(
-                      '${(progressData[index].percentage * 100).round()} + " " + %',
+                      '${(progressData[index].percentage * 100).round()} %',
                       textAlign: TextAlign.end,
                       style: const TextStyle(
                         fontSize: 16,
