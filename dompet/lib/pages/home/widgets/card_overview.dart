@@ -1,4 +1,5 @@
 import 'package:dompet/models/model.dart';
+import 'package:dompet/pages/home/widgets/head_title.dart';
 import 'package:flutter/material.dart';
 
 import '/../../constant/constant.dart';
@@ -31,12 +32,9 @@ class BuildCardOverview extends StatelessWidget {
         children: [
           mainCard(context),
           const SizedBox(height: 15),
-          const Text(
-            "Cards Overview",
-            style: TextStyle(fontSize: 18),
-          ),
-          const SizedBox(height: 5),
-          const Text("The getter 'child' isn't defined for the class"),
+          const BuildHeadTitle(
+              headTitle: "Card's Overview",
+              labelTitle: 'lorem ipsum dolor set amet'),
           const SizedBox(height: 25),
           SizedBox(
             height: 160, // Set an appropriate height for your use case

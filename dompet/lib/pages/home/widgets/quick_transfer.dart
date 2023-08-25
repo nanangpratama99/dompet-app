@@ -1,13 +1,12 @@
 import 'package:dompet/pages/home/widgets/custom_circleavatar.dart';
+import 'package:dompet/pages/home/widgets/head_title.dart';
 import 'package:flutter/material.dart';
 
 import '/../../constant/constant.dart';
 
 class BuildQuicTransfer extends StatefulWidget {
-  final String title;
   const BuildQuicTransfer({
     super.key,
-    required this.title,
   });
 
   @override
@@ -37,21 +36,10 @@ class _BuildQuicTransferState extends State<BuildQuicTransfer> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Quic Transfer", style: TextStyle(fontSize: 20)),
-              Icon(
-                Icons.more_vert,
-                color: Colors.grey,
-              ),
-            ],
-          ),
+          const BuildHeadTitle(
+              headTitle: 'Quick Transfer',
+              labelTitle: 'lorem ipsum dolor set amet, concentor'),
           const SizedBox(height: 10),
-          const Text(
-            "If the [style] argument is null",
-            style: TextStyle(color: Colors.grey),
-          ),
           const SizedBox(height: 10),
           Container(
             padding: const EdgeInsets.all(15),

@@ -1,4 +1,4 @@
-import 'package:dompet/pages/home/widgets/head_spend_title.dart';
+import 'package:dompet/pages/home/widgets/head_title.dart';
 import 'package:dompet/pages/home/widgets/spend_button.dart';
 import 'package:dompet/pages/home/widgets/list_progres_item.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,9 @@ class _BuildSpendingsCardState extends State<BuildSpendingsCard> {
       ),
       child: const Column(
         children: [
-          BuildHeadTitle(),
+          BuildHeadTitle(
+              headTitle: 'Spendings',
+              labelTitle: 'lorem ipsum dolor set amet, concentor'),
           SizedBox(height: 30),
           BuildListProgresItem(),
           SizedBox(height: 20),

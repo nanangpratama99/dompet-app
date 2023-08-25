@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../constant/constant.dart';
 
 class BuildSpendingButton extends StatelessWidget {
-  const BuildSpendingButton({
+  const   BuildSpendingButton({
     super.key,
   });
 

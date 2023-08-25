@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '/../../constant/constant.dart';
 
 class DotNotification extends StatelessWidget {
-  const DotNotification({super.key});
+  final String countNotif;
+  const DotNotification({super.key, required this.countNotif});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,8 @@ class DotNotification extends StatelessWidget {
         color: color3,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: const Center(
-        child: Text("2"),
+      child: Center(
+        child: Text(countNotif),
       ),
     );
   }

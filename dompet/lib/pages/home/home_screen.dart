@@ -1,9 +1,11 @@
 import 'package:dompet/models/model.dart';
+import 'package:dompet/pages/home/widgets/card_info.dart';
 import 'package:dompet/pages/home/widgets/card_overview.dart';
 import 'package:dompet/pages/home/widgets/card_spendings.dart';
 import 'package:dompet/pages/home/widgets/custom_drawer.dart';
 import 'package:dompet/pages/home/widgets/insight.dart';
 import 'package:dompet/pages/home/widgets/invoice_card.dart';
+import 'package:dompet/pages/home/widgets/previeous_transaction_card.dart';
 import 'package:dompet/pages/home/widgets/quick_transfer.dart';
 
 import 'package:flutter/material.dart';
@@ -23,12 +25,17 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<double> insightData = [0.4, 0.7, 0.5, 0.9, 0.4];
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  List<String> svg = [
+    "assets/svg/burger-menu.svg",
+    "assets/svg/right-arrow.svg",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Container(
-        margin: const EdgeInsets.only(top: 30, bottom: 30),
+        margin: const EdgeInsets.only(top: 100, bottom: 20),
         width: MediaQuery.of(context).size.width * 0.7,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -43,10 +50,16 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset(
-            "assets/svg/burger-menu.svg",
+            svg[0],
             width: 100,
           ),
-          onPressed: () => _scaffoldKey.currentState!.openDrawer(),
+          onPressed: () {
+            if (_scaffoldKey.currentState!.isDrawerOpen) {
+              _scaffoldKey.currentState!.openEndDrawer();
+            } else {
+              _scaffoldKey.currentState!.openDrawer();
+            }
+          },
         ),
         title: Row(
           children: [
@@ -91,17 +104,17 @@ class _HomeScreenState extends State<HomeScreen> {
               const Positioned(
                 left: 15,
                 bottom: 25,
-                child: DotNotification(),
+                child: DotNotification(countNotif: '3'),
               ),
               const Positioned(
                 left: 55,
                 bottom: 25,
-                child: DotNotification(),
+                child: DotNotification(countNotif: '4'),
               ),
               const Positioned(
                 right: 10,
                 bottom: 25,
-                child: DotNotification(),
+                child: DotNotification(countNotif: '5'),
               ),
             ],
           )
@@ -158,19 +171,68 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 15),
                   Row(
                     children: [
-                      const Text("Income", style: TextStyle(fontSize: 18)),
-                      const Text("\$49384", style: TextStyle(fontSize: 20)),
+                      const Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Activity",
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                       const Spacer(),
-                      const Text("Outcome", style: TextStyle(fontSize: 18)),
-                      const Text("\$49384", style: TextStyle(fontSize: 20)),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              const Text(
+                                "Income",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(width: 10),
+                              _buildDot(Colors.green)
+                            ],
+                          )
+                        ],
+                      ),
                       const SizedBox(width: 10),
-                      _buildDot(Colors.redAccent),
                     ],
                   ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.amber,
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "\$2030.203",
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                      const Spacer(),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              const Text(
+                                "Outcome",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(width: 10),
+                              _buildDot(Colors.redAccent)
+                            ],
+                          )
+                        ],
+                      ),
+                      const SizedBox(width: 10),
+                    ],
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 25),
@@ -212,11 +274,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            const BuildQuicTransfer(
-              title: 'a',
-            ),
+            const BuildQuicTransfer(),
             const SizedBox(height: 20),
-            const BuildSpendingsCard()
+            const BuildSpendingsCard(),
+            const SizedBox(height: 30),
+            const PrevieousTransaction(),
+            const SizedBox(height: 30),
+            const CardInfo(),
+            const SizedBox(height: 30),
           ],
         ),
       ),

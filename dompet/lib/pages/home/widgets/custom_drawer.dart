@@ -25,13 +25,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: color7.withOpacity(0.2),
       body: Container(
         padding: const EdgeInsets.all(20),
         width: MediaQuery.of(context).size.width * 0.9,
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
-          color: color4,
+          color: Colors.white,
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(50),
             bottomRight: Radius.circular(35),
@@ -39,50 +39,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
         ),
         child: Column(
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CircleAvatar(
-                  backgroundColor: color1,
-                ),
-                const SizedBox(width: 10),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Samuel",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    Text(
-                      "@samuel",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 35,
-                    width: 35,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(Icons.arrow_back_ios_rounded,
-                        color: Colors.white, size: 25),
-                  ),
-                )
-              ],
-            ),
-            const Divider(thickness: 2, color: Colors.white),
-            const SizedBox(height: 30),
+            const BuildTopSidebar(),
+            const SizedBox(height: 10),
             SizedBox(
               height: 500,
               // width: MediaQuery.of(context).size.width * 0.8,
@@ -98,21 +56,22 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       child: Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                            color: menuData[index].isActive
-                                ? Colors.white
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(10)),
+                          color: menuData[index].isActive
+                              ? const Color(0xFF5BCFC6).withOpacity(0.2)
+                              : Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: Row(
                           children: [
                             menuData[index].isActive
                                 ? Icon(
                                     menuData[index].icon,
-                                    color: Colors.black54,
+                                    color: const Color(0xFF5BCFC6),
                                     size: 30,
                                   )
                                 : Icon(
                                     menuData[index].icon,
-                                    color: Colors.white,
+                                    color: const Color(0xFF5BCFC6),
                                     size: 30,
                                   ),
                             const SizedBox(width: 10),
@@ -120,24 +79,24 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                 ? Text(
                                     menuData[index].menuTitle,
                                     style: const TextStyle(
-                                      color: Colors.black54,
+                                      color: Color(0xFF5BCFC6),
                                     ),
                                   )
                                 : Text(
                                     menuData[index].menuTitle,
                                     style: const TextStyle(
-                                      color: Colors.white,
+                                      color: Color(0xFF5BCFC6),
                                     ),
                                   ),
                             const Spacer(),
                             menuData[index].isActive
                                 ? Icon(
                                     menuData[index].iconMore,
-                                    color: Colors.black54,
+                                    color: const Color(0xFF5BCFC6),
                                   )
                                 : Icon(
                                     menuData[index].iconMore,
-                                    color: Colors.white,
+                                    color: const Color(0xFF5BCFC6),
                                   )
                           ],
                         ),
@@ -152,7 +111,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               children: [
                 const Text(
                   "Logout",
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: TextStyle(color: Color(0xFF5BCFC6), fontSize: 20),
                 ),
                 const Spacer(),
                 IconButton(
@@ -160,7 +119,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   icon: const Icon(
                     Icons.logout,
                     size: 30,
-                    color: Colors.white,
+                    color: Color(0xFF5BCFC6),
                   ),
                 ),
               ],
@@ -168,6 +127,74 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class BuildTopSidebar extends StatelessWidget {
+  const BuildTopSidebar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const CircleAvatar(
+          radius: 37,
+          backgroundColor: Colors.white,
+          child: CircleAvatar(
+            radius: 35,
+            backgroundImage: AssetImage("assets/images/3.jpeg"),
+          ),
+        ),
+        const SizedBox(width: 10),
+        const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Samuel",
+              style: TextStyle(color: Colors.black, fontSize: 20),
+            ),
+            Text(
+              "@samuel",
+              style: TextStyle(color: Colors.black),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+            ),
+          ],
+        ),
+        const Spacer(),
+        GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            alignment: Alignment.center,
+            height: 45,
+            width: 45,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            child: Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: const Color(0xFF5BCFC6).withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(50)),
+              child: const Center(
+                child: Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: Colors.black54,
+                  size: 20,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }

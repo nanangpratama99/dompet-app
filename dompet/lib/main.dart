@@ -1,4 +1,4 @@
-import 'package:dompet/pages/home/home_screen.dart';
+import 'package:dompet/pages/home/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
